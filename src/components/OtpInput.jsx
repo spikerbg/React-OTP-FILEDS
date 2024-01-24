@@ -9,7 +9,6 @@ export default function OtpInput({ length = 4, onOtpSubmit }) {
             inputRefs.current[0].focus()
         }
     }, [])
-    console.log(inputRefs)
 
     const handlerChange = (index, e) => {
         const value = e.target.value;
@@ -22,12 +21,24 @@ export default function OtpInput({ length = 4, onOtpSubmit }) {
 
         //submit trigger
         const combinedOtp = newOtp.join("")
-        console.log(newOtp,combinedOtp)
+        if (combinedOtp.length === length) onOtpSubmit(combinedOtp)
+
+        //move to next input if current filed is filled
+        if (value && index < length - 1 && inputRefs.current[index + 1]) {
+            inputRefs.current[index + 1].focus();
+        }
     }
     const handlerClick = () => {
 
     }
-    const handlerKeyDown = () => {
+    const handlerKeyDown = (index, e) => {
+        if (e.key === "Backspace" && 
+        !otp[input] && index > 0 && 
+        inputRefs.current[index - 1]) 
+        {
+            //Move focus to the previous input filed on backspace
+            inputRefs.current[index - 1].focus()
+        }
 
     }
     return (
