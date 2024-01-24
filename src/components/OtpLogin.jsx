@@ -27,12 +27,14 @@ setShowOtpInput(true)
     }
 
     return (
-        <div>
+        <div className="">
             {!showOtpInput ? <form onSubmit={handlePhoneSubmit}>
+                <div className="">
                 <input type="text" value={phoneNumber} onChange={handlePhoneNumber}
-                    placeholder="Phone number" />
-                <button type="submit">Submit</button>
-
+                    placeholder="Phone number" 
+                    className="mx-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5"/>
+                <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Submit</button>
+                </div>
             </form>
             :<div>
                 <p>Enter OTP send to {phoneNumber}</p>

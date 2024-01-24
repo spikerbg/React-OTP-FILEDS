@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold ">
+      <h1 className="text-3xl font-bold my-4 ">
         REACT OTP FILEDS!
       </h1>
       <OtpLogin />
