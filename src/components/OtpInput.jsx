@@ -28,8 +28,13 @@ export default function OtpInput({ length = 4, onOtpSubmit }) {
             inputRefs.current[index + 1].focus();
         }
     }
-    const handlerClick = () => {
+    const handlerClick = (index) => {
+        inputRefs.current[index].setSelectionRange(1,1)
 
+        //optional
+        if(index > 0 && !otp[index - 1]){
+            inputRefs.current[otp.indexOf("")].focus()
+        }
     }
     const handlerKeyDown = (index, e) => {
         if (e.key === "Backspace" && 
