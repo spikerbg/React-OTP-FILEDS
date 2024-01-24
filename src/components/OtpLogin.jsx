@@ -3,6 +3,7 @@ import { useState } from "react"
 
 export default function OtpLogin() {
     const [phoneNumber, setPhoneNumber] = useState("")
+    const [showOtpInput, setShowOtpInput] = useState(false)
 
     const handlePhoneNumber = (e) => {
         setPhoneNumber(e.target.value)
@@ -18,16 +19,20 @@ export default function OtpLogin() {
 
 // connect to API
 // show OTP Fileds
+setShowOtpInput(true)
     }
 
     return (
         <div>
-            <form onSubmit={handlePhoneSubmit}>
+            {!showOtpInput ? <form onSubmit={handlePhoneSubmit}>
                 <input type="text" value={phoneNumber} onChange={handlePhoneNumber}
                     placeholder="Phone number" />
                 <button type="submit">Submit</button>
 
             </form>
+            :<div>
+                <p>Enter OTP send to {phoneNumber}</p>
+                </div>}
         </div>
     )
 }
